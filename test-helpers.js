@@ -1,29 +1,38 @@
-function test(message, actual, expected) {
-  if (actual === expected) {
-    const defaultMessage = `Expected ${expected} and received ${actual}`;
-    console.info("Pass: " + (message || defaultMessage));
-    resetTest();
-  } else {
-    const defaultMessage = `Expected ${expected} but received ${actual} instead`;
-    console.error("Fail: " + (message || defaultMessage));
-    resetTest();
-  }
+function describe(groupName, describeFunction) {
+  console.group("%c " + groupName, "font-size: 13px");
+  describeFunction();
+  console.groupEnd();
 }
 
-function notEqual(actual, expected, message) {
-  if (actual !== expected) {
-    const defaultMessage = `${expected} is different to ${actual}`;
-    console.info("Pass: " + (message || defaultMessage));
-  } else {
-    const defaultMessage = `${expected} is the same as ${actual}`;
-    console.error("Fail: " + (message || defaultMessage));
-  }
+function test(testName, testFunction) {
+  const { result, expected, actual } = testFunction();
+  createFormattedConsoleGroup(testName, result);
+
+  !result &&
+    console.log(
+      `Expected "${expected}" but found %c"${actual}"`,
+      "font-size: 12px; color: red; font-weight: bold"
+    );
+
+  console.groupEnd();
+  resetTestEnvironment();
+  return { result };
 }
 
-function describe(name, testFunction) {
-  console.group(name);
-  testFunction();
-  console.groupEnd(name);
+function createFormattedConsoleGroup(testName, result) {
+  console[result ? "groupCollapsed" : "group"](
+    (result ? "✅" : "❌") + ` ${testName}`
+  );
+}
+
+function equal(actual, expected) {
+  if (actual === expected) return { result: true };
+
+  return {
+    result: false,
+    expected,
+    actual,
+  };
 }
 
 function $(object) {
