@@ -2,25 +2,37 @@ const testListEl = document.querySelector(".list");
 const testInput = document.querySelector("input");
 const testSaveBtn = document.querySelector(".save-btn");
 
-describe("When changes input value", () => {
-  testInput.value = "Shopping";
-  test("standard strings are used", testInput.value, "Shopping");
+describe("When user changes input value", () => {
+  test("standard strings", () => {
+    testInput.value = "Shopping";
+    return equal(testInput.value, "Shopping");
+  });
+
+  test("random symbols", () => {
+    testInput.value = "%*!'l;";
+    return equal(testInput.value, "%*!'l;");
+  });
+
+  test("random numbers", () => {
+    testInput.value = "12345675";
+    return equal(testInput.value, "12345635");
+  });
 });
 
 describe("When user clicks save", () => {
-  emulateInputAndClick("Run");
-  test("list length is updated", testListEl.children.length, 1);
+  test("list length is updated on task creation", () => {
+    emulateInputAndClick("Run");
+    return equal(testListEl.children.length, 1);
+  });
 
-  emulateInputAndClick("Call 074 9124-1237");
-  const newTask = document.querySelector("li");
-  test(
-    "correct content is added to the new task",
-    newTask.textContent,
-    "Call 074 9124-1237"
-  );
+  test("correct content is added to the new task", () => {
+    emulateInputAndClick("Call John at: 074 9124-1237");
+    const newTask = document.querySelector("li");
+    return equal(newTask.textContent, "Call John at: 074 9124-1237");
+  });
 });
 
-function resetTest() {
+function resetTestEnvironment() {
   testListEl.innerHTML = "";
   testInput.value = "";
 }
