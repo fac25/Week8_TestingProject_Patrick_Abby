@@ -29,7 +29,7 @@ describe("When user clicks save", () => {
   test("correct content is added to the new task", () => {
     emulateInputAndClick("Call John at: 074 9124-1237");
     const newTask = document.querySelector("li");
-    return equal(newTask.textContent, "Call John at: 074 9124-1237");
+    return equal(newTask.textContent.slice(0, -6), "Call John at: 074 9124-1237");
   });
 });
 
