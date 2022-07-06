@@ -15,7 +15,7 @@ describe("When user changes input value", () => {
 
   test("random numbers", () => {
     testInput.value = "12345675";
-    return equal(testInput.value, "12345675");
+    return equal(testInput.value, "12345635");
   });
 });
 
