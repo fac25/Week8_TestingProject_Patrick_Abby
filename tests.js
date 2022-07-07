@@ -45,13 +45,32 @@ describe("When user clicks save", () => {
   test("renders task checkbox", () => {
     emulateInputAndClick("newTask");
     const newTask = document.querySelector("li");
-    const checkbox = newTask.querySelector("input[type='checkbox']");
+    const checkbox = newTask.querySelector("input");
 
     return equal(Boolean(checkbox), true);
   });
 });
 
-describe("When user clicks task checkbox", () => {});
+describe("When user clicks task checkbox", () => {
+  test("it toggles the task's 'completed' class", () => {
+    emulateInputAndClick("mock test item");
+    const newTask = document.querySelector("li");
+    const checkbox = newTask.querySelector("input");
+    checkbox.click();
+
+    return equal(newTask.classList.contains("completed"), true);
+  });
+
+  test("it toggles data-completed value", () => {
+    emulateInputAndClick("mock test item");
+    const newTask = document.querySelector("li");
+    const checkbox = newTask.querySelector("input");
+    checkbox.click();
+
+    const isTaskCompleted = newTask.dataset.completed === "true";
+    return equal(isTaskCompleted, true);
+  });
+});
 
 describe("User delete a task from the list", () => {
   test("user insert exsting task name and click delete button to delete the task", () => {
