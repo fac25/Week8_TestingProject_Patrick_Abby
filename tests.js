@@ -80,7 +80,7 @@ describe("User delete a task from the list", () => {
     testDeleteBtn[0].click();
     return equal(
       testListEl.innerHTML,
-      `<li>toDelete2<button class="delete-btn">Delete</button></li>`
+      `<li data-completed="false"><input type="checkbox"><p>toDelete2</p><button class="delete-btn">Delete</button></li>`
     );
   });
   test("user insert exsting task name and click delete button to delete multiple tasks", () => {
@@ -96,8 +96,7 @@ describe("User delete a task from the list", () => {
     testDeleteBtn[4].click();
     testDeleteBtn[5].click();
     return equal(
-      testListEl.innerHTML,
-      `<li>toDelete1<button class="delete-btn">Delete</button></li><li>toDelete3<button class="delete-btn">Delete</button></li>`
+      testListEl.children.length, 2
     );
   });
 });
