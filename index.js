@@ -7,7 +7,7 @@ function addTask(event) {
 }
 
 function createTodo() {
-  const inputValue = document.querySelector("input").value;
+  const inputValue = document.querySelector(".task-input").value;
   const listEl = document.querySelector("ul");
   const newTask = document.createElement("li");
 
