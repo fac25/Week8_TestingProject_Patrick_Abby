@@ -1,5 +1,5 @@
 const testListEl = document.querySelector(".list");
-const testInput = document.querySelector("input");
+const testInput = document.querySelector(".task-input");
 const testSaveBtn = document.querySelector(".save-btn");
 
 describe("When user changes input value", () => {
