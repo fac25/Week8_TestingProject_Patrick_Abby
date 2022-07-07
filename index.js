@@ -11,16 +11,37 @@ function createTodo() {
   const listEl = document.querySelector("ul");
   const newTask = document.createElement("li");
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete"
-  deleteBtn.setAttribute("class", "delete-btn")
-  deleteBtn.addEventListener("click", () => [
-    newTask.remove()
-  ])
+  newTask.dataset.completed = false;
 
-  newTask.textContent = inputValue;
+  // Create children
+  const checkbox = createCheckbox(newTask);
+  const deleteBtn = createDeleteBtn(newTask);
+  const newTaskName = document.createElement("p");
+
+  newTaskName.textContent = inputValue;
+
+  newTask.append(checkbox, newTaskName, deleteBtn);
   listEl.append(newTask);
-  newTask.append(deleteBtn)
-
 }
 
+function createCheckbox(newTask) {
+  const checkbox = document.createElement("input");
+
+  checkbox.type = "checkbox";
+  checkbox.addEventListener("click", () => {
+    newTask.classList.toggle("completed");
+    newTask.dataset.completed = !JSON.parse(newTask.dataset.completed);
+  });
+
+  return checkbox;
+}
+
+function createDeleteBtn(newTask) {
+  const deleteBtn = document.createElement("button");
+
+  deleteBtn.textContent = "Delete";
+  deleteBtn.setAttribute("class", "delete-btn");
+  deleteBtn.addEventListener("click", () => [newTask.remove()]);
+
+  return deleteBtn;
+}
