@@ -2,6 +2,7 @@ const testListEl = document.querySelector(".list");
 const testInput = document.querySelector("input");
 const testSaveBtn = document.querySelector(".save-btn");
 
+
 describe("When user changes input value", () => {
   test("standard strings", () => {
     testInput.value = "Shopping";
@@ -28,9 +29,37 @@ describe("When user clicks save", () => {
   test("correct content is added to the new task", () => {
     emulateInputAndClick("Call John at: 074 9124-1237");
     const newTask = document.querySelector("li");
-    return equal(newTask.textContent, "Call John at: 074 9124-1237");
+    return equal(newTask.textContent.slice(0, -6), "Call John at: 074 9124-1237");
   });
 });
+
+
+describe("User delete a task from the list", () => {
+  test("user insert exsting task name and click delete button to delete the task", () => {
+    emulateInputAndClick("toDelete")
+    emulateInputAndClick("toDelete2")
+    const testDeleteBtn = document.querySelectorAll(".delete-btn");
+    testDeleteBtn[0].click()
+    return equal(testListEl.innerHTML, `<li>toDelete2<button class="delete-btn">Delete</button></li>`)
+  })
+  test("user insert exsting task name and click delete button to delete multiple tasks", () => {
+    emulateInputAndClick("toDelete")
+    emulateInputAndClick("toDelete1")
+    emulateInputAndClick("toDelete2")
+    emulateInputAndClick("toDelete3")
+    emulateInputAndClick("toDelete4")
+    emulateInputAndClick("toDelete5")
+    const testDeleteBtn = document.querySelectorAll(".delete-btn");
+    testDeleteBtn[0].click()
+    testDeleteBtn[2].click()
+    testDeleteBtn[4].click()
+    testDeleteBtn[5].click()
+    return equal(testListEl.innerHTML, `<li>toDelete1<button class="delete-btn">Delete</button></li><li>toDelete3<button class="delete-btn">Delete</button></li>`)
+  })
+})
+
+
+
 
 function resetTestEnvironment() {
   testListEl.innerHTML = "";
@@ -41,3 +70,4 @@ function emulateInputAndClick(text) {
   testInput.value = text;
   saveBtn.click();
 }
+
