@@ -11,16 +11,17 @@ function createTodo() {
   const listEl = document.querySelector("ul");
   const newTask = document.createElement("li");
 
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+
+  const newTaskName = document.createElement("p");
+  newTaskName.textContent = inputValue;
+
   const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete"
-  deleteBtn.setAttribute("class", "delete-btn")
-  deleteBtn.addEventListener("click", () => [
-    newTask.remove()
-  ])
+  deleteBtn.textContent = "Delete";
+  deleteBtn.setAttribute("class", "delete-btn");
+  deleteBtn.addEventListener("click", () => newTask.remove());
 
-  newTask.textContent = inputValue;
+  newTask.append(checkbox, newTaskName, deleteBtn);
   listEl.append(newTask);
-  newTask.append(deleteBtn)
-
 }
-
