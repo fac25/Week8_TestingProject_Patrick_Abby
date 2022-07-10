@@ -34,10 +34,12 @@ h1 span {
 li {
   display: grid;
   grid-template-columns: 5rem auto 5rem;
+  align-items: center;
+  justify-items: center;
+
 }
 
 li>* {
-  margin-left: 1rem;
   margin-top: 1rem;
 }
 
@@ -49,10 +51,17 @@ li>button {
   width: 4.5rem;
   height: 1.5rem;
   font-size: 0.7rem;
+  margin-left: 2rem;
 }
 
 li>input {
-  width: 3.5rem;
+  width: 20px;
+  height: 20px;
+}
+
+li>p {
+  width: 13rem;
+  word-wrap: break-word;
 }
 
 .filter {
