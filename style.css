@@ -3,7 +3,7 @@ li {
   align-items: center;
 }
 
-.completed {
+.todo--completed {
   text-decoration: line-through;
   opacity: 0.5;
 }

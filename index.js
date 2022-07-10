@@ -36,7 +36,7 @@ function renderTodos(arr) {
 function createTodo(todo, index) {
   const newLi = document.createElement("li");
   const checkbox = createCheckbox(newLi, index);
-  const deleteBtn = createDeleteBtn(newLi);
+  const deleteBtn = createDeleteBtn(newLi, index);
   const todoName = document.createElement("p");
 
   todoName.textContent = todo.name;
@@ -48,26 +48,27 @@ function createTodo(todo, index) {
 function createCheckbox(newTask, index) {
   const checkbox = document.createElement("input");
   const isCompleted = todosArr[index].isCompleted;
+  newTask.classList.add(isCompleted ? "todo--completed" : "todo");
 
   checkbox.type = "checkbox";
-  checkbox.classList = isCompleted ? "completed" : "";
   checkbox.checked = isCompleted;
 
   checkbox.addEventListener("click", () => {
-    newTask.classList.toggle("completed");
+    newTask.classList.toggle("todo--completed");
     todosArr[index].isCompleted = !isCompleted;
   });
 
   return checkbox;
 }
 
-function createDeleteBtn(newTask) {
+function createDeleteBtn(newTask, index) {
   const deleteBtn = document.createElement("button");
 
   deleteBtn.textContent = "Delete";
   deleteBtn.setAttribute("class", "delete-btn");
   deleteBtn.addEventListener("click", () => {
     newTask.remove();
+    todosArr.splice(index, 1); // Remove current todo from todosArr
   });
 
   return deleteBtn;
