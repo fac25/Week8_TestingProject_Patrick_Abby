@@ -45,29 +45,29 @@ function createTodo(todo, index) {
   todosUl.append(newLi);
 }
 
-function createCheckbox(newTask, index) {
+function createCheckbox(newLi, index) {
   const checkbox = document.createElement("input");
   const isCompleted = todosArr[index].isCompleted;
-  newTask.classList.add(isCompleted ? "todo--completed" : "todo");
+  newLi.classList.add(isCompleted ? "todo--completed" : "todo");
 
   checkbox.type = "checkbox";
   checkbox.checked = isCompleted;
 
   checkbox.addEventListener("click", () => {
-    newTask.classList.toggle("todo--completed");
+    newLi.classList.toggle("todo--completed");
     todosArr[index].isCompleted = !isCompleted;
   });
 
   return checkbox;
 }
 
-function createDeleteBtn(newTask, index) {
+function createDeleteBtn(newLi, index) {
   const deleteBtn = document.createElement("button");
 
   deleteBtn.textContent = "Delete";
   deleteBtn.setAttribute("class", "delete-btn");
   deleteBtn.addEventListener("click", () => {
-    newTask.remove();
+    newLi.remove();
     todosArr.splice(index, 1); // Remove current todo from todosArr
   });
 
