@@ -80,10 +80,10 @@ describe("User delete a task from the list", () => {
     createTestTodo("toDelete2");
     const testDeleteBtn = document.querySelectorAll(".delete-btn");
     testDeleteBtn[0].click();
-    return equal(
-      testListEl.innerHTML,
-      `<li><input type="checkbox" class=""><p>toDelete2</p><button class="delete-btn">Delete</button></li>`
-    );
+
+    const remainingTodoName = testListEl.querySelector("p");
+
+    return equal(remainingTodoName.textContent, "toDelete2");
   });
 
   test("user insert exsting task name and click delete button to delete multiple tasks", () => {
