@@ -59,7 +59,7 @@ describe("When user clicks task checkbox", () => {
     const checkbox = newTask.querySelector("input");
     checkbox.click();
 
-    return equal(newTask.classList.contains("completed"), true);
+    return equal(newTask.classList.contains("todo--completed"), true);
   });
 
   test("toggles todo's 'completed' value", () => {
