@@ -64,7 +64,7 @@ function createCheckbox(newLi, index) {
 function createDeleteBtn(newLi, index) {
   const deleteBtn = document.createElement("button");
 
-  deleteBtn.textContent = "Delete";
+  deleteBtn.textContent = "🗑️ Delete";
   deleteBtn.setAttribute("class", "delete-btn");
   deleteBtn.addEventListener("click", () => {
     newLi.remove();
