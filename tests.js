@@ -30,7 +30,7 @@ describe("When user clicks save", () => {
     createTestTodo("Call John at: 074 9124-1237");
     const newTask = document.querySelector("li");
     return equal(
-      newTask.textContent.slice(0, -6),
+      newTask.textContent.slice(0, -10),
       "Call John at: 074 9124-1237"
     );
   });
