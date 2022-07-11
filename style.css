@@ -1,5 +1,5 @@
 * {
-  font-family: 'Prata', serif;
+  font-family: "Prata", serif;
   background-color: #dbd2d1;
   margin: 0;
 }
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.main--container>* {
+.main--container > * {
   margin-top: 0.7rem;
 }
 
@@ -20,11 +20,10 @@ h1 {
   border-bottom: 0.1rem solid #000;
   line-height: 0.1em;
   padding-top: 2rem;
-
 }
 
 h1 span {
-  padding: 1rem
+  padding: 1rem;
 }
 
 .list {
@@ -36,14 +35,13 @@ li {
   grid-template-columns: 5rem auto 5rem;
   align-items: center;
   justify-items: center;
-
 }
 
-li>* {
+li > * {
   margin-top: 1rem;
 }
 
-li>button {
+li > button {
   border-radius: 0.5rem;
   background-color: rgb(12, 26, 43);
   color: white;
@@ -54,12 +52,12 @@ li>button {
   margin-left: 2rem;
 }
 
-li>input {
+li > input {
   width: 20px;
   height: 20px;
 }
 
-li>p {
+li > p {
   width: 13rem;
   word-wrap: break-word;
 }
@@ -99,6 +97,9 @@ li>p {
 }
 
 .todo--completed {
-  text-decoration: line-through;
   opacity: 0.5;
+}
+
+.todo--completed label {
+  text-decoration: line-through;
 }
