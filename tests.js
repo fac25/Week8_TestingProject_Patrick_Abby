@@ -21,6 +21,12 @@ describe("When user changes input value", () => {
 });
 
 describe("When user clicks save", () => {
+  test("if input field is empty, display error", () => {
+    createTestTodo("");
+    const errorContainer = document.querySelector(".error");
+    return equal(errorContainer.textContent, "Please type in something.");
+  });
+
   test("list length is updated on task creation", () => {
     createTestTodo("Run");
     return equal(testListEl.children.length, 1);
@@ -49,6 +55,11 @@ describe("When user clicks save", () => {
     const checkbox = newTask.querySelector("input");
 
     return equal(Boolean(checkbox), true);
+  });
+
+  test("input value is set to empty string after submission", () => {
+    createTestTodo("lol");
+    return equal(testInput.value, "");
   });
 });
 
@@ -81,7 +92,7 @@ describe("User delete a task from the list", () => {
     const testDeleteBtn = document.querySelectorAll(".delete-btn");
     testDeleteBtn[0].click();
 
-    const remainingTodoName = testListEl.querySelector("p");
+    const remainingTodoName = testListEl.querySelector("label");
 
     return equal(remainingTodoName.textContent, "toDelete2");
   });

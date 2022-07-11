@@ -10,11 +10,16 @@ filterDropDown.addEventListener("change", renderFilteredTodos);
 function addTodo(event) {
   event.preventDefault();
 
-  const inputValue = document.querySelector(".task-input").value;
-  const newTodo = { name: inputValue, isCompleted: false };
+  const input = document.querySelector(".task-input");
+  const newTodo = { name: input.value, isCompleted: false };
+
+  if (input.value.length === 0) return displayError();
 
   todosArr.push(newTodo);
   renderFilteredTodos(todosArr);
+
+  // Reset input
+  input.value = "";
 }
 
 function renderFilteredTodos() {
@@ -37,8 +42,11 @@ function createTodo(todo, index) {
   const newLi = document.createElement("li");
   const checkbox = createCheckbox(newLi, index);
   const deleteBtn = createDeleteBtn(newLi, index);
-  const todoName = document.createElement("p");
+  const todoName = document.createElement("label");
 
+  newLi.classList.add(todosArr[index].isCompleted ? "todo--completed" : "todo");
+
+  todoName.htmlFor = `todo-checkbox-${index}`;
   todoName.textContent = todo.name;
 
   newLi.append(checkbox, todoName, deleteBtn);
@@ -47,15 +55,15 @@ function createTodo(todo, index) {
 
 function createCheckbox(newLi, index) {
   const checkbox = document.createElement("input");
-  const isCompleted = todosArr[index].isCompleted;
-  newLi.classList.add(isCompleted ? "todo--completed" : "todo");
 
+  checkbox.id = `todo-checkbox-${index}`;
   checkbox.type = "checkbox";
-  checkbox.checked = isCompleted;
+  checkbox.checked = todosArr[index].isCompleted;
 
   checkbox.addEventListener("click", () => {
+    console.log();
     newLi.classList.toggle("todo--completed");
-    todosArr[index].isCompleted = !isCompleted;
+    todosArr[index].isCompleted = !todosArr[index].isCompleted;
   });
 
   return checkbox;
@@ -72,4 +80,11 @@ function createDeleteBtn(newLi, index) {
   });
 
   return deleteBtn;
+}
+
+function displayError() {
+  const errorContainer = document.querySelector(".error");
+  errorContainer.textContent = "Please type in something.";
+
+  setTimeout(() => (errorContainer.textContent = ""), 2000);
 }
