@@ -13,7 +13,7 @@ function addTodo(event) {
   const input = document.querySelector(".task-input");
   const newTodo = { name: input.value, isCompleted: false };
 
-  if (input.value.length === 0) return;
+  if (input.value.length === 0) return displayError();
 
   todosArr.push(newTodo);
   renderFilteredTodos(todosArr);
@@ -80,4 +80,11 @@ function createDeleteBtn(newLi, index) {
   });
 
   return deleteBtn;
+}
+
+function displayError() {
+  const errorContainer = document.querySelector(".error");
+  errorContainer.textContent = "Please type in something.";
+
+  setTimeout(() => (errorContainer.textContent = ""), 2000);
 }

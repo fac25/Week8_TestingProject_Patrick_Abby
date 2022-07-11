@@ -21,9 +21,10 @@ describe("When user changes input value", () => {
 });
 
 describe("When user clicks save", () => {
-  test("if input field is empty, do nothing", () => {
+  test("if input field is empty, display error", () => {
     createTestTodo("");
-    return equal(testListEl.children.length, 0);
+    const errorContainer = document.querySelector(".error");
+    return equal(errorContainer.textContent, "Please type in something.");
   });
 
   test("list length is updated on task creation", () => {
