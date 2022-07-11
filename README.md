@@ -1,6 +1,6 @@
 # FAC Week8 testing project- To-Do list
 A to-do list tracker- It should allow users to create, complete and delete tasks from a list. <br>
-[Live Here](https://fac25.github.io/Week8_TestingProject_Patrick_Abby/)
+[View Page Here](https://fac25.github.io/Week8_TestingProject_Patrick_Abby/)
 <br>
 
 ## User stories
@@ -15,8 +15,7 @@ A to-do list tracker- It should allow users to create, complete and delete tasks
 
 
 ## Project Criteria 
-☑️ You should have automated tests covering all the main user stories<br>
 ☑️ A working to-do list<br>
-☑️ Tests for (at least) each user story<br>
+☑️ Automated tests for (at least) each user story<br>
 ☑️ A responsive, mobile-first design<br>
 ☑️ Ensure your app is accessible to as many different users as possible<br>
