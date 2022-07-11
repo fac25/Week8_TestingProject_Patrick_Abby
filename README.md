@@ -3,7 +3,7 @@ A to-do list tracker- It should allow users to create, complete and delete tasks
 [View Page Here](https://fac25.github.io/Week8_TestingProject_Patrick_Abby/)
 <br>
 
-## User stories
+## User Stories
 #### As a busy person, I want to:<br>
 📍Add tasks to a list so that I can keep track of them <br>
 📍Check things off my list so that I can see what I’ve done <br>
