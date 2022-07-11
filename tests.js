@@ -135,7 +135,7 @@ describe("When user applies filter", () => {
     return equal(completedTodo.classList.contains("todo--completed"), true);
   });
 
-  test("should display only uncompleted todos length", () => {
+  test("should display only pending todos length", () => {
     createTestTodo("first");
     createTestTodo("second");
     createTestTodo("third");
