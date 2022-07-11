@@ -38,15 +38,18 @@ function renderTodos(arr) {
   arr.forEach((todo, index) => createTodo(todo, index));
 }
 
-function createTodo(todo, index) {
+function createTodo(todo) {
+  const todoIndex = todosArr.indexOf(todo);
   const newLi = document.createElement("li");
-  const checkbox = createCheckbox(newLi, index);
-  const deleteBtn = createDeleteBtn(newLi, index);
+  const checkbox = createCheckbox(newLi, todoIndex);
+  const deleteBtn = createDeleteBtn(newLi, todoIndex);
   const todoName = document.createElement("label");
 
-  newLi.classList.add(todosArr[index].isCompleted ? "todo--completed" : "todo");
+  newLi.classList.add(
+    todosArr[todoIndex].isCompleted ? "todo--completed" : "todo"
+  );
 
-  todoName.htmlFor = `todo-checkbox-${index}`;
+  todoName.htmlFor = `todo-checkbox-${todoIndex}`;
   todoName.textContent = todo.name;
 
   newLi.append(checkbox, todoName, deleteBtn);
@@ -61,7 +64,6 @@ function createCheckbox(newLi, index) {
   checkbox.checked = todosArr[index].isCompleted;
 
   checkbox.addEventListener("click", () => {
-    console.log();
     newLi.classList.toggle("todo--completed");
     todosArr[index].isCompleted = !todosArr[index].isCompleted;
   });

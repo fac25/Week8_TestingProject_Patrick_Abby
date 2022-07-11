@@ -114,7 +114,28 @@ describe("User delete a task from the list", () => {
 });
 
 describe("When user applies filter", () => {
-  test("should display only uncompleted todos", () => {
+  test("should display correct todos", () => {
+    // User creates two tasks
+    createTestTodo("first");
+    createTestTodo("second");
+
+    // User completes the second task
+    const secondCheckbox = document.querySelectorAll(
+      "input[type='checkbox']"
+    )[1];
+    secondCheckbox.click();
+
+    // Changes filter to 'Completed'
+    filterDropDown.value = "Completed";
+    renderFilteredTodos();
+
+    // Check whether the task is rendered with correct class
+    const completedTodo = document.querySelector("li");
+
+    return equal(completedTodo.classList.contains("todo--completed"), true);
+  });
+
+  test("should display only pending todos length", () => {
     createTestTodo("first");
     createTestTodo("second");
     createTestTodo("third");
@@ -130,7 +151,7 @@ describe("When user applies filter", () => {
     return equal(testListEl.children.length, 2);
   });
 
-  test("should display only completed todos", () => {
+  test("should display only completed todos length", () => {
     createTestTodo("first");
     createTestTodo("second");
     createTestTodo("third");
@@ -146,7 +167,7 @@ describe("When user applies filter", () => {
     return equal(testListEl.children.length, 1);
   });
 
-  test("should display all todos", () => {
+  test("should display all todos length", () => {
     createTestTodo("first");
     createTestTodo("second");
     createTestTodo("third");
