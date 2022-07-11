@@ -37,8 +37,9 @@ function createTodo(todo, index) {
   const newLi = document.createElement("li");
   const checkbox = createCheckbox(newLi, index);
   const deleteBtn = createDeleteBtn(newLi, index);
-  const todoName = document.createElement("p");
+  const todoName = document.createElement("label");
 
+  todoName.htmlFor = `todo-checkbox-${index}`;
   todoName.textContent = todo.name;
 
   newLi.append(checkbox, todoName, deleteBtn);
@@ -50,6 +51,7 @@ function createCheckbox(newLi, index) {
   const isCompleted = todosArr[index].isCompleted;
   newLi.classList.add(isCompleted ? "todo--completed" : "todo");
 
+  checkbox.id = `todo-checkbox-${index}`;
   checkbox.type = "checkbox";
   checkbox.checked = isCompleted;
 

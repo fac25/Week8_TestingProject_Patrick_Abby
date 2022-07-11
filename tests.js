@@ -81,7 +81,7 @@ describe("User delete a task from the list", () => {
     const testDeleteBtn = document.querySelectorAll(".delete-btn");
     testDeleteBtn[0].click();
 
-    const remainingTodoName = testListEl.querySelector("p");
+    const remainingTodoName = testListEl.querySelector("label");
 
     return equal(remainingTodoName.textContent, "toDelete2");
   });
