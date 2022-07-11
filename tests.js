@@ -21,6 +21,11 @@ describe("When user changes input value", () => {
 });
 
 describe("When user clicks save", () => {
+  test("if input field is empty, do nothing", () => {
+    createTestTodo("");
+    return equal(testListEl.children.length, 0);
+  });
+
   test("list length is updated on task creation", () => {
     createTestTodo("Run");
     return equal(testListEl.children.length, 1);
@@ -49,6 +54,11 @@ describe("When user clicks save", () => {
     const checkbox = newTask.querySelector("input");
 
     return equal(Boolean(checkbox), true);
+  });
+
+  test("input value is set to empty string after submission", () => {
+    createTestTodo("lol");
+    return equal(testInput.value, "");
   });
 });
 
