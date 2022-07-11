@@ -48,16 +48,17 @@ function createTodo(todo, index) {
 
 function createCheckbox(newLi, index) {
   const checkbox = document.createElement("input");
-  const isCompleted = todosArr[index].isCompleted;
-  newLi.classList.add(isCompleted ? "todo--completed" : "todo");
+
+  newLi.classList.add(todosArr[index].isCompleted ? "todo--completed" : "todo");
 
   checkbox.id = `todo-checkbox-${index}`;
   checkbox.type = "checkbox";
-  checkbox.checked = isCompleted;
+  checkbox.checked = todosArr[index].isCompleted;
 
   checkbox.addEventListener("click", () => {
+    console.log();
     newLi.classList.toggle("todo--completed");
-    todosArr[index].isCompleted = !isCompleted;
+    todosArr[index].isCompleted = !todosArr[index].isCompleted;
   });
 
   return checkbox;
