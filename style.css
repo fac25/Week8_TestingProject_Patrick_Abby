@@ -79,11 +79,12 @@ li > p {
   display: inline-block;
   padding: 0.3rem 1.5rem;
   font-size: 0.8rem;
+  font-weight: 900;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
+  color: #0e0e0e;
   background-color: #8ba394;
   border: none;
   border-radius: 0.5rem;
