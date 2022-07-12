@@ -14,8 +14,10 @@
     <title>Todo List</title>
   </head>
   <body>
-    <div class="main--container">
+    <header>
       <h1><span>To Do List</span></h1>
+    </header>
+    <main class="main--container">
       <label for="filter"
         >Filter:
         <select id="filter">
@@ -27,11 +29,18 @@
       <ul class="list"></ul>
 
       <form class="input--form">
-        <p class="error"></p>
-        <input type="text" class="task-input" placeholder="water the plants" />
+        <p class="error" id="err"></p>
+        <label for="input-field">Todo Name:</label>
+        <input
+          id="input-field"
+          type="text"
+          class="task-input"
+          placeholder="water the plants"
+          aria-describedby="err"
+        />
         <button class="save-btn">Save</button>
       </form>
-    </div>
+    </main>
 
     <script src="./test-helpers.js"></script>
     <script src="./index.js"></script>

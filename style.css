@@ -52,6 +52,10 @@ li > button {
   margin-left: 2rem;
 }
 
+li > button:focus {
+  outline: rgb(67, 67, 235) 2px solid;
+}
+
 li > input {
   width: 20px;
   height: 20px;
@@ -75,6 +79,10 @@ li > p {
   border-radius: 0.2rem;
 }
 
+.input--form {
+  color: black;
+}
+
 .save-btn {
   display: inline-block;
   padding: 0.3rem 1.5rem;
@@ -83,7 +91,6 @@ li > p {
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  outline: none;
   color: #0e0e0e;
   background-color: #8ba394;
   border: none;
