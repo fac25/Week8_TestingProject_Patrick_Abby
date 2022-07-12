@@ -2,9 +2,9 @@ let todosArr = [];
 
 const todosUl = document.querySelector("ul");
 const filterDropDown = document.querySelector(".filter");
-const saveBtn = document.querySelector(".save-btn");
+const form = document.querySelector("form");
 
-saveBtn.addEventListener("click", addTodo);
+form.addEventListener("submit", addTodo);
 filterDropDown.addEventListener("change", renderFilteredTodos);
 
 function addTodo(event) {
