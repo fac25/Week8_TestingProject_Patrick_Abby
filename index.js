@@ -1,10 +1,10 @@
 let todosArr = [];
 
 const todosUl = document.querySelector("ul");
-const filterDropDown = document.querySelector(".filter");
-const saveBtn = document.querySelector(".save-btn");
+const filterDropDown = document.querySelector("#filter");
+const form = document.querySelector("form");
 
-saveBtn.addEventListener("click", addTodo);
+form.addEventListener("submit", addTodo);
 filterDropDown.addEventListener("change", renderFilteredTodos);
 
 function addTodo(event) {
@@ -58,15 +58,20 @@ function createTodo(todo) {
 
 function createCheckbox(newLi, index) {
   const checkbox = document.createElement("input");
+  const toggleCheckbox = () => {
+    newLi.classList.toggle("todo--completed");
+    todosArr[index].isCompleted = !todosArr[index].isCompleted;
+  };
 
   checkbox.id = `todo-checkbox-${index}`;
   checkbox.type = "checkbox";
   checkbox.checked = todosArr[index].isCompleted;
 
-  checkbox.addEventListener("click", () => {
-    newLi.classList.toggle("todo--completed");
-    todosArr[index].isCompleted = !todosArr[index].isCompleted;
-  });
+  checkbox.addEventListener("change", toggleCheckbox);
+  checkbox.addEventListener(
+    "keydown",
+    ({ key }) => key === "Enter" && checkbox.click()
+  );
 
   return checkbox;
 }

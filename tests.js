@@ -1,24 +1,7 @@
 const testListEl = document.querySelector(".list");
 const testInput = document.querySelector(".task-input");
-const testFilterDropdown = document.querySelector(".filter");
+const testFilterDropdown = document.querySelector("#filter");
 const testSaveBtn = document.querySelector(".save-btn");
-
-describe("When user changes input value", () => {
-  test("standard strings", () => {
-    testInput.value = "Shopping";
-    return equal(testInput.value, "Shopping");
-  });
-
-  test("random symbols", () => {
-    testInput.value = "%*!'l;";
-    return equal(testInput.value, "%*!'l;");
-  });
-
-  test("random numbers", () => {
-    testInput.value = "12345675";
-    return equal(testInput.value, "12345635");
-  });
-});
 
 describe("When user clicks save", () => {
   test("if input field is empty, display error", () => {
@@ -195,5 +178,5 @@ function resetTestEnvironment() {
 
 function createTestTodo(text) {
   testInput.value = text;
-  saveBtn.click();
+  testSaveBtn.click();
 }
