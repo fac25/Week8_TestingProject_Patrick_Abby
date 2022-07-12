@@ -13,27 +13,26 @@
     />
     <title>Todo List</title>
   </head>
-
-  <div class="main--container">
-    <h1><span>To Do List</span></h1>
-    <label for="filter"
-      >Filter:
-      <select class="filter">
-        <option>All</option>
-        <option>Pending</option>
-        <option>Completed</option>
-      </select>
-    </label>
-    <ul class="list"></ul>
-
-    <form class="input--form">
-      <p class="error"></p>
-      <input type="text" class="task-input" placeholder="water the plants" />
-      <button class="save-btn">Save</button>
-    </form>
-  </div>
-
   <body>
+    <div class="main--container">
+      <h1><span>To Do List</span></h1>
+      <label for="filter"
+        >Filter:
+        <select id="filter">
+          <option>All</option>
+          <option>Pending</option>
+          <option>Completed</option>
+        </select>
+      </label>
+      <ul class="list"></ul>
+
+      <form class="input--form">
+        <p class="error"></p>
+        <input type="text" class="task-input" placeholder="water the plants" />
+        <button class="save-btn">Save</button>
+      </form>
+    </div>
+
     <script src="./test-helpers.js"></script>
     <script src="./index.js"></script>
     <script src="./tests.js"></script>

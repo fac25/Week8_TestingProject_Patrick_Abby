@@ -1,7 +1,7 @@
 let todosArr = [];
 
 const todosUl = document.querySelector("ul");
-const filterDropDown = document.querySelector(".filter");
+const filterDropDown = document.querySelector("#filter");
 const form = document.querySelector("form");
 
 form.addEventListener("submit", addTodo);

@@ -1,6 +1,6 @@
 const testListEl = document.querySelector(".list");
 const testInput = document.querySelector(".task-input");
-const testFilterDropdown = document.querySelector(".filter");
+const testFilterDropdown = document.querySelector("#filter");
 const testSaveBtn = document.querySelector(".save-btn");
 
 describe("When user clicks save", () => {
@@ -178,5 +178,5 @@ function resetTestEnvironment() {
 
 function createTestTodo(text) {
   testInput.value = text;
-  saveBtn.click();
+  testSaveBtn.click();
 }
