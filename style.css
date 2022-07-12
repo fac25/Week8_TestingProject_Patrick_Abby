@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.main--container > * {
+.main--container>* {
   margin-top: 0.7rem;
 }
 
@@ -37,11 +37,11 @@ li {
   justify-items: center;
 }
 
-li > * {
+li>* {
   margin-top: 1rem;
 }
 
-li > button {
+li>button {
   border-radius: 0.5rem;
   background-color: rgb(12, 26, 43);
   color: white;
@@ -56,12 +56,12 @@ li > button:focus {
   outline: rgb(67, 67, 235) 2px solid;
 }
 
-li > input {
+li>input {
   width: 20px;
   height: 20px;
 }
 
-li > p {
+li>label {
   width: 13rem;
   word-wrap: break-word;
 }
