@@ -10,6 +10,12 @@ describe("When user clicks save", () => {
     return equal(errorContainer.textContent, "Please type in something.");
   });
 
+  test("if input field has only whitespace, display error", () => {
+    createTestTodo("   ");
+    const errorContainer = document.querySelector(".error");
+    return equal(errorContainer.textContent, "Please type in something.");
+  });
+
   test("list length is updated on task creation", () => {
     createTestTodo("Run");
     return equal(testListEl.children.length, 1);
